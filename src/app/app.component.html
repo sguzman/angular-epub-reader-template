@@ -1,3 +1,22 @@
 <article>
-  <h1>Test</h1>
+  <div>
+    <button mat-raised-button
+            class="example-add-tab-button"
+            (click)="addTab()">
+      Add new tab
+    </button>
+  </div>
+  <mat-tab-group [selectedIndex]="selected.value"
+                 (selectedIndexChange)="selected.setValue($event)">
+    <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+      Contents for {{tab}} tab
+
+      <button mat-raised-button
+              class="example-delete-tab-button"
+              [disabled]="tabs.length === 1"
+              (click)="removeTab(index)">
+        Delete Tab
+      </button>
+    </mat-tab>
+  </mat-tab-group>
 </article>
